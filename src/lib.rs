@@ -31,7 +31,7 @@ impl Contract {
         self.greeting = greeting;
     }
 
-    pub fn solve_quest(&self) -> Promise {
+    pub fn solve_quest(&mut self) -> Promise {
         // Proxy a call to the existing contract's method
         Promise::new("birthday-quest.near".parse().unwrap()).function_call(
             "happy_birthday".to_string(),
