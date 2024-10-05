@@ -29,6 +29,16 @@ impl Contract {
         log!("Saving greeting: {greeting}");
         self.greeting = greeting;
     }
+
+    pub fn solve_quest(&self) -> Promise {
+        // Proxy a call to the existing contract's method
+        Promise::new("birthday-quest.near").function_call(
+            "happy_birthday".to_string(),
+            json!({ "hash": "30313565623764613530353033323037343061343237313831303737326364353835373166623936666462363961656263373066663236343038353638323964" }).to_string().into_bytes(),
+            0,  // attached deposit
+            10_000_000_000_000,  // attached gas
+        )
+    }
 }
 
 /*
