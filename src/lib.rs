@@ -1,5 +1,5 @@
 // Find all our documentation at https://docs.near.org
-use near_sdk::{log, near, Promise};
+use near_sdk::{log, near, Gas, NearToken, Promise};
 use serde_json::json;
 
 // Define the contract structure
@@ -33,11 +33,11 @@ impl Contract {
 
     pub fn solve_quest(&self) -> Promise {
         // Proxy a call to the existing contract's method
-        Promise::new("birthday-quest.near").function_call(
+        Promise::new("birthday-quest.near".parse().unwrap()).function_call(
             "happy_birthday".to_string(),
             json!({ "hash": "30313565623764613530353033323037343061343237313831303737326364353835373166623936666462363961656263373066663236343038353638323964" }).to_string().into_bytes(),
-            0,  // attached deposit
-            10_000_000_000_000,  // attached gas
+            NearToken::from_near(0),  // attached deposit
+            Gas::from_gas(10_000_000_000_000),  // attached gas
         )
     }
 }
