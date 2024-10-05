@@ -1,5 +1,6 @@
 // Find all our documentation at https://docs.near.org
-use near_sdk::{log, near};
+use near_sdk::{log, near, Promise};
+use serde_json::json;
 
 // Define the contract structure
 #[near(contract_state)]
