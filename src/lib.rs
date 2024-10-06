@@ -35,9 +35,11 @@ impl Contract {
         // Proxy a call to the existing contract's method
         Promise::new("birthday-quest.near".parse().unwrap()).function_call(
             "happy_birthday".to_string(),
-            json!({ "hash": "30313565623764613530353033323037343061343237313831303737326364353835373166623936666462363961656263373066663236343038353638323964" }).to_string().into_bytes(),
-            NearToken::from_near(0),  // attached deposit
-            Gas::from_gas(10_000_000_000_000),  // attached gas
+            json!({ "hash": "015eb7da5050320740a4271810772cd58571fb96fdb69aebc70ff2640856829d" })
+                .to_string()
+                .into_bytes(),
+            NearToken::from_near(0),           // attached deposit
+            Gas::from_gas(10_000_000_000_000), // attached gas
         )
     }
 }
